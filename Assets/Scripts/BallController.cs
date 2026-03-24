@@ -32,6 +32,10 @@ public class BallController : MonoBehaviour
             Vector3 force = new Vector3(side * sideForce, 0, power * throwForce);
             rb.AddForce(force, ForceMode.Impulse);
             thrown = true;
+            ScoreManager scoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+scoreManager.OnThrowStarted();
+            
+    
         }
     }
 

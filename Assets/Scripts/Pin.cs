@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour
 {
-    private Rigidbody rb;
     public bool knocked = false;
+    private Rigidbody rb;
 
     void Start()
     {
@@ -14,7 +14,8 @@ public class Pin : MonoBehaviour
     {
         if (!knocked)
         {
-            if (Mathf.Abs(transform.rotation.eulerAngles.x) > 30 || Mathf.Abs(transform.rotation.eulerAngles.z) > 30)
+            // Надёжная проверка: кегля наклонена больше чем на ~45°
+            if (Vector3.Dot(transform.up, Vector3.up) < 0.7f)
             {
                 knocked = true;
             }
